@@ -118,8 +118,9 @@
 # 2.22 - Remove Rust Definitions. More formal support will be added soon.
 # 2.23 - Add OemData Definitions
 # 2.24 - PSYCHE! Rust is back!
+# 2.25 - More Rust changes
 
-#!VERSION=2.24
+#!VERSION=2.25
 
 [C-Code-File]
     <InputFile>
@@ -283,6 +284,7 @@
 
     <Command>
         $(CARGO) $(CARGO_BUILDCMD) $(CARGO_FLAGS) --manifest-path ${s_path}(+)Cargo.toml -Z unstable-options --out-dir $(OUTPUT_DIR)
+        $(CP) $(OUTPUT_DIR)(+)lib$(MODULE_NAME).a $(OUTPUT_DIR)(+)$(MODULE_NAME).lib
 
 [Toml-File.RUST_MODULE]
     <InputFile>
