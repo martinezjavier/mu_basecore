@@ -14,15 +14,7 @@
 extern crate alloc;
 
 #[cfg(not(test))]
-extern crate uefi_rust_panic_lib;
-
-#[cfg(not(test))]
-extern crate uefi_rust_allocation_lib;
-
-#[cfg(not(test))]
-extern crate uefi_rust_print_lib_debug_lib;
-#[cfg(not(test))]
-use uefi_rust_print_lib_debug_lib::println;
+extern crate allocation;
 
 use alloc::slice;
 use alloc::string::String;
