@@ -17,10 +17,12 @@ panic = "abort"
 name = "UefiVariablePolicyLibRust"
 crate-type = ["staticlib"]
 
-[dependencies]
-r-efi = { git = "https://github.com/microsoft/mu_rust.git" }
+[dependencies.r-efi]
+git = "https://github.com/microsoft/mu_rust.git"
 
 [dependencies.allocation]
 features = ["alloc_by_c"]
 git = "https://github.com/microsoft/mu_rust.git"
-branch = "personal/brbarkel/rust_standalone_varpol"
+
+[dependencies.panic]
+git = "https://github.com/microsoft/mu_rust.git"

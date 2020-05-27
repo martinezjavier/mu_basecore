@@ -15,6 +15,7 @@ extern crate alloc;
 
 #[cfg(not(test))]
 extern crate allocation;
+extern crate panic;
 
 use alloc::slice;
 use alloc::string::String;
