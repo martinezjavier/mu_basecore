@@ -17,6 +17,9 @@ panic = "abort"
 name = "UefiVariablePolicyLibRust"
 crate-type = ["staticlib"]
 
+[package.metadata.cargo-xbuild]
+memcpy = false
+
 [dependencies.r-efi]
 git = "https://github.com/microsoft/mu_rust.git"
 
