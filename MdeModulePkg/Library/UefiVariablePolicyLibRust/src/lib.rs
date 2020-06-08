@@ -153,7 +153,7 @@ pub extern "win64" fn validate_set_variable (
       let is_valid = lib_state.policy_list.is_set_variable_valid(&my_variable_name, &my_vendor_guid, attributes, my_data);
       match is_valid {
         true => efi::Status::SUCCESS,
-        false => efi::Status::INVALID_PARAMETER
+        false => efi::Status::WRITE_PROTECTED
       }
     },
     None => efi::Status::NOT_READY
