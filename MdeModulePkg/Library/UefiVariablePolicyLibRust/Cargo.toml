@@ -17,6 +17,10 @@ panic = "abort"
 name = "UefiVariablePolicyLibRust"
 crate-type = ["staticlib"]
 
+# This is needed while mu_rust is private in the Microsoft organization.
+[net]
+git-fetch-with-cli = true
+
 [package.metadata.cargo-xbuild]
 memcpy = false
 
