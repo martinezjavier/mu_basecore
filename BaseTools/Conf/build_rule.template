@@ -117,8 +117,9 @@
 # 2.21 - Add Rust Definitions
 # 2.22 - Remove Rust Definitions. More formal support will be added soon.
 # 2.23 - Add OemData Definitions
+# 2.24 - Add .arc and .ver file type to add .rsrc sections to EFI images.
 
-#!VERSION=2.23
+#!VERSION=2.24
 
 [C-Code-File]
     <InputFile>
@@ -765,3 +766,29 @@
 
     <Command.XCODE, Command.RVCT>
         GenFw -o $(OUTPUT_DIR)(+)$(MODULE_NAME)hii.rc -g $(MODULE_GUID) --hiibinpackage $(HII_BINARY_PACKAGES)
+
+[Resource-File]
+    <InputFile>
+        *.arc
+
+    <OutputFile.MSFT, OutputFile.INTEL, OutputFile.GCC, OutputFile.CLANGPDB>
+        $(OUTPUT_DIR)(+)$(MODULE_NAME)Resource.lib
+
+    <OutputFile.XCODE, OutputFile.RVCT>
+        $(OUTPUT_DIR)(+)$(MODULE_NAME)Resource.rc
+
+    <Command.MSFT, Command.INTEL, Command.CLANGPDB>
+        "$(RC)" /Fo${dst} ${src}
+
+    <Command.GCC>
+        "$(RC)" $(RC_FLAGS) ${src} ${dst}
+
+[Version-Info-File]
+    <InputFile>
+        *.ver
+
+    <OutputFile.MSFT, OutputFile.INTEL, OutputFile.GCC, OutputFile.CLANGPDB>
+        $(OUTPUT_DIR)(+)$(MODULE_NAME).arc
+
+    <Command.MSFT, Command.INTEL, Command.CLANGPDB> Command.GCC, Command.XCODE>
+        versioninfo_tool -e ${src} ${dst}
