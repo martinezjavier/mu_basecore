@@ -767,7 +767,7 @@
     <Command.XCODE, Command.RVCT>
         GenFw -o $(OUTPUT_DIR)(+)$(MODULE_NAME)hii.rc -g $(MODULE_GUID) --hiibinpackage $(HII_BINARY_PACKAGES)
 
-[Resource-File]
+[Resource-File] # MU_CHANGE Start
     <InputFile>
         *.arc
 
@@ -790,5 +790,5 @@
     <OutputFile.MSFT, OutputFile.INTEL, OutputFile.GCC, OutputFile.CLANGPDB>
         $(OUTPUT_DIR)(+)$(MODULE_NAME).arc
 
-    <Command.MSFT, Command.INTEL, Command.CLANGPDB> Command.GCC, Command.XCODE>
-        versioninfo_tool -e ${src} ${dst}
+    <Command.MSFT, Command.INTEL, Command.CLANGPDB, Command.GCC, Command.XCODE>
+        versioninfo_tool -e ${src} ${dst} # MU_CHANGE End
